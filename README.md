@@ -59,10 +59,10 @@ curl -X GET "http://localhost:5000/creation"
 > **Note:** Each app folder has its own docker and README files with instructions to run each image separately
 
 ### Flask App:
-> To view the Flask app navigate to folder flask-backend (https://github.com/deyaa562/Containerized-web-app/tree/master/flask-backend)
+> To view the Flask app navigate to folder flask-backend (https://github.com/deyaa562/docker-app/tree/master/flask-backend)
 
 ### React App:
-> To view the React app navigate to folder react-frontend (https://github.com/deyaa562/Containerized-web-app/tree/master/react-frontend)
+> To view the React app navigate to folder react-frontend (https://github.com/deyaa562/docker-app/tree/master/react-frontend)
 
 
 # Maintaining the Containers
