@@ -9,17 +9,21 @@ services:
         BUILD_TIME: ${BUILD_TIME}
         DYNAMIC_PARAM: ${DYNAMIC_PARAM}
     ports:
-      - "5000:5000"
+      - "${BACKEND_PORT}:5000"
     environment:
       - BUILD_TIME=${BUILD_TIME}
       - DYNAMIC_PARAM=${DYNAMIC_PARAM}
       - FLASK_ENV=production
+      - BACKEND_PORT=${BACKEND_PORT}
 
   frontend:
     build:
       context: ./react-frontend
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "${FRONTEND_PORT}:3000"
     depends_on:
       - backend
+    environment:
+      - BACKEND_PORT=${BACKEND_PORT}
+      - FRONTEND_PORT=${FRONTEND_PORT}

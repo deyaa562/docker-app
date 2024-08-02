@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+const backendPort = process.env.BACKEND_PORT || 5000
+const backendUrl = `http://localhost:${backendPort}`
+
 const ApiButtons = () => {
   const [result, setResult] = useState('');
   const [downloadFileName, setDownloadFileName] = useState('');
 
   const getCreationTime = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/creation');
+      const response = await axios.get(`${backendUrl}/creation`);
       setResult(JSON.stringify(response.data, null, 2));
     } catch (error) {
       setResult(`Error: ${error.message}`);
@@ -17,7 +20,7 @@ const ApiButtons = () => {
 
   const getDynamicValue = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/dynamic');
+      const response = await axios.get(`${backendUrl}/dynamic`);
       setResult(JSON.stringify(response.data, null, 2));
     } catch (error) {
       setResult(`Error: ${error.message}`);
@@ -27,7 +30,7 @@ const ApiButtons = () => {
 
   const getDockerfile = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/dockerfile', { responseType: 'text' });
+      const response = await axios.get(`${backendUrl}/dockerfile`, { responseType: 'text' });
       setResult(response.data);
     } catch (error) {
       setResult(`Error: ${error.message}`);
@@ -37,7 +40,7 @@ const ApiButtons = () => {
 
   const getIndex = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/', { responseType: 'text' });
+      const response = await axios.get(`${backendUrl}/`, { responseType: 'text' });
       setResult(response.data);
     } catch (error) {
       setResult(`Error: ${error.message}`);
@@ -51,7 +54,7 @@ const ApiButtons = () => {
     formData.append('file', file);
 
     try {
-      const response = await axios.put('http://localhost:5000/put', formData);
+      const response = await axios.put(`${backendUrl}/put`, formData);
       setResult(response.data);
     } catch (error) {
       setResult(`Error: ${error.message}`);
@@ -61,7 +64,7 @@ const ApiButtons = () => {
 
   const downloadFile = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/get?filename=${downloadFileName}`, { responseType: 'blob' });
+      const response = await axios.get(`${backendUrl}/get?filename=${downloadFileName}`, { responseType: 'blob' });
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement('a');
       link.href = url;
