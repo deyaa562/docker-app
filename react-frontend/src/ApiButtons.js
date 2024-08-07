@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const backendPort = process.env.BACKEND_PORT || 5000
+const backendPort = process.env.REACT_APP_BACKEND_PORT || 5000
 const backendUrl = `http://localhost:${backendPort}`
 
 const ApiButtons = () => {
