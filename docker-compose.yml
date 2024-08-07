@@ -20,10 +20,12 @@ services:
     build:
       context: ./react-frontend
       dockerfile: Dockerfile
+      args:
+        REACT_APP_BACKEND_PORT: ${BACKEND_PORT}
     ports:
       - "${FRONTEND_PORT}:3000"
     depends_on:
       - backend
     environment:
-      - BACKEND_PORT=${BACKEND_PORT}
+      - REACT_APP_BACKEND_PORT=${BACKEND_PORT}
       - FRONTEND_PORT=${FRONTEND_PORT}

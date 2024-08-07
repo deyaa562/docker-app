@@ -24,7 +24,6 @@ def dockerfile_content():
 
 @app.route('/')
 def index():
-    print(f'{os.getcwd()}/templates')
     return send_from_directory(f'{os.getcwd()}/templates', 'index.html')
 
 @app.route('/put', methods=['PUT'])
@@ -52,4 +51,4 @@ def get_file():
 
 if __name__ == '__main__':
     port = int(os.getenv('BACKEND_PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0', port=5000)
