@@ -8,7 +8,6 @@ In this repository, we will create a docker image that includes a simple python 
 4. **`/`** - returns an index.html.
 5. **`/put`** - gets a file and stores it on the image runtime. 
 6. **`/get?filename`** - returns a file from the local store (that was uploaded previously). 
-7. **`/list`** - list all files that were uploaded previously
 
 ### Building the image
 > To build the image run the following command the directory that contains the Dockerfile
